@@ -11,6 +11,18 @@
 <title>
 Portfolio
 </title>
+<script>
+function usersearchTxt(str) {
+  var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function () {
+if(this.readyState == 4 && this.status == 200){
+document.getElementById('searchTxt').innerHTML = this.responseText;
+}
+}
+xmlhttp.open("GET","search.php?search="+str,true);
+xmlhttp.send();
+}
+</script>
 </head>
 <body>
 <h1> Mysa Salsabil Chowdhury </h1>
@@ -58,6 +70,8 @@ Portfolio
 
 
       ?>
+      <input id="searchBox" type="text"  onkeyup="usersearchTxt(document.getElementById('searchBox').value);">
+<div id="searchTxt">
       <div class="you">
       <p> Name : <?php echo $name; ?></p>
      <p> Username : <?php echo $username; ?></p>
@@ -68,7 +82,11 @@ Portfolio
      <p> Email : <?php echo $email; ?></p>
 
  </div>
-
+</div>
+ <?php
+ include 'search.php';
+ echo fetch('');
+ ?>
 
 
       <br>
